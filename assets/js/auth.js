@@ -2,13 +2,13 @@
 module.exports = {
   auth: null,
   init: function (callback) {
-    var config = {
-      apiKey: "AIzaSyD0NF7XE1cUM9ahOm8EEYNAPAxAsfvG_H8",
-      authDomain: "belajar-a6c69.firebaseapp.com",
-      databaseURL: "https://belajar-a6c69.firebaseio.com",
-      projectId: "belajar-a6c69",
-      storageBucket: "belajar-a6c69.appspot.com",
-      messagingSenderId: "983334527033"
+    // Initialize Firebase
+    apiKey: "AIzaSyD2iDKD_hPWZ_D3_SlReuL5y66iJdr5IaQ",
+    authDomain: "sirotisip.firebaseapp.com",
+    databaseURL: "https://sirotisip.firebaseio.com",
+    projectId: "sirotisip",
+    storageBucket: "",
+    messagingSenderId: "789985661044"
     };
     Firebase.initializeApp(config);
 
