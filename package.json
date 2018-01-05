@@ -1,0 +1,26 @@
+{
+  "name": "sirotisip",
+  "version": "1.0.0",
+  "description": "Sistem Informasi yang berguna untuk menunjang prosen penjualan di UPT ROTI SIP Politeknik Negeri Jember. Dibuat dengan HTML + Javascript + PHP + Firebase dan sedikit cinta.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fikrirbb/SIROTISIP.git"
+  },
+  "keywords": [
+    "firebase",
+    "javascript",
+    "html"
+  ],
+  "author": "fikrirbb <fikrirbb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fikrirbb/SIROTISIP/issues"
+  },
+  "homepage": "https://github.com/fikrirbb/SIROTISIP#readme"
+}
