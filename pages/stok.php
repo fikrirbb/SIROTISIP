@@ -4,10 +4,57 @@
               <div class="card card-outline-info">
                 <div class="card-header">
                   <div class="row">
-               <div class="col-6">
+               <div class="col-9">
                  <h3 class="card-title text-white">Stok Barang</h3>
                </div>
+               <div class="col-3 text-right">
+                  <input type="date" class="form-control" id="stokTgl">
+               </div>
                 </div>
+                </div>
+
+                <div class="card-body">
+
+                <div class="row m-l-10">
+                      <div class="col-lg-4">
+                        <div class="form-group m-b-0">
+                            <label>Barang</label>
+                              <select class="select2 form-control custom-select" style="width: 100%; height:36px;" id="selkasirbrg">
+                                  <optgroup label="Nama Barang" id="selbarang">
+                                  </optgroup>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-1">
+                        <div class="form-group m-b-0">
+                            <label for="recipient-name" class="control-label">Awal</label>
+                            <input type="text" class="form-control" id="stokAwal">
+                        </div>
+                      </div>
+                        <div class="col-md-1">
+                        <div class="form-group m-b-0">
+                            <label for="recipient-name" class="control-label">Sisa</label>
+                            <input type="text" class="form-control" id="stokSisa">
+                        </div>
+                      </div>
+                      <div class="col-md-1">
+                        <div class="form-group m-b-0">
+                            <label for="recipient-name" class="control-label">Retur</label>
+                            <input type="text" class="form-control" id="stokRetur">
+                        </div>
+                      </div>
+                      <div class="col-md-1 ">
+                        <div class="form-group m-b-0">
+                            <label for="recipient-name" class="control-label">Batas</label>
+                            <input type="text" class="form-control" id="stokBatas">
+                        </div>
+                      </div>
+                      <div class="col-md-2 m-t-30">
+                          <button type="button" class="btn btn-warning" id="btnStok">Simpan</button>
+                      </div>
+                </div>
+                <div class="row">
+
                 </div>
                <div class="card-body p-t-0">
                    <div class="table-responsive">
@@ -15,10 +62,10 @@
                            <thead>
                                <tr>
                                  <th>Nama</th>
-                                 <th>Jenis</th>
-                                 <th>Harga</th>
+                                 <th>Stok Awal</th>
+                                 <th>Sisa</th>
+                                 <th>Retur</th>
                                  <th>Batas Stok</th>
-                                 <th>Stok</th>
                                  <th>Aksi</th>
                                </tr>
                            </thead>
@@ -31,44 +78,8 @@
                    </div>
                </div>
            </div>
+           </div>
 
-            </div>
-        </div>
-
-
-        <div class="modal fade" id="stokModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel1">Edit Stok</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <form>
-                    <div class="modal-body">
-                          <input type="hidden" id="hiddenID"/>
-                            <div class="form-group">
-                                <label for="recipient-name" class="control-label">Nama Barang</label>
-                                <input type="text" class="form-control" id="barangNama">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="control-label">Batas Stok</label>
-                                <input type="text" class="form-control" id="barangBatas">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="control-label">Stok Brang</label>
-                                <input type="text" class="form-control" id="barangStok">
-                            </div>
-                            <!-- <div class="form-group">
-                                <label for="message-text" class="control-label">Message:</label>
-                                <textarea class="form-control" id="message-text1"></textarea>
-                            </div> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-warning" id="btnStok">Update</button>
-                    </div>
-                    </form>
-                </div>
             </div>
         </div>
         <!-- /.modal -->

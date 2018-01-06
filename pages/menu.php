@@ -25,25 +25,21 @@
                  <li class="nav-devider"></li>
                 <li class=""> <a class="waves-effect waves-dark" href="index.php?page=home"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
-                <li class=""> <a class="waves-effect waves-dark" href="index.php?page=kasir"><i class="mdi mdi-cart"></i><span class="hide-menu">Kasir</span></a>
-                </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">Master</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="index.php?page=barang">Barang</a></li>
                         <li><a href="index.php?page=stok">Stok</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Transaksi</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.php?page=pemasukan">Pemasukan</a></li>
-                        <li><a href="index.php?page=pengeluaran">Pengeluaran</a></li>
-                    </ul>
+                <li class=""> <a class="waves-effect waves-dark" href="index.php?page=kasir"><i class="mdi mdi-cart"></i><span class="hide-menu">Kasir</span></a>
+                </li>
+                <li class=""> <a class="waves-effect waves-dark" href="index.php?page=pengeluaran"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Pengeluaran</span></a>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Laporan</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="index.php?page=lapjual">Transaksi Penjualan</a></li>
                         <li><a href="index.php?page=lapkeluar">Pengeluaran</a></li>
-                        <li><a href="index.php?page=laplabarugi">Pendapatan (new)</a></li>
+                        <li><a href="index.php?page=laplabarugi">Pendapatan (SOON)</a></li>
                     </ul>
                 </li>
 

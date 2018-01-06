@@ -33,24 +33,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 ////////////////PAGE HOME ////////////////////////////////
 $('#date-format').bootstrapMaterialDatePicker({ format : 'dddd DD MMMM YYYY - HH:mm' });
 var ctnbtnTambah = document.getElementById('ctnbtnTambah');
-var ktnTgl   = document.getElementById('ktnTgl');
+var ktnJudul   = document.getElementById('ktnJudul');
 var ktnDet    = document.getElementById('ktnDet');
 var ktnID   = document.getElementById('ktnID');
 
 ctnbtnTambah.addEventListener('click', (e) => {
 //  e.preventDefault();
 
-  if (!ktnTgl.value || !ktnDet.value) return null
-
-  var id = ktnID.value || Date.now()
+  if (!ktnJudul.value || !ktnDet.value) return null
 
   db.ref('todo/').push().set({
-    ktnTgl: ktnTgl.value,
-    ktnDet: ktnDet.value,
-    timeStamp: firebase.database.ServerValue.TIMESTAMP
+    ktnJudul: ktnJudul.value,
+    ktnDet: ktnDet.value
   });
 
-  ktnTgl.value = '';
+  ktnJudul.value = '';
   ktnDet.value  = '';
   ktnID.value = '';
 });
@@ -96,9 +93,9 @@ kontenToDo.addEventListener('click', (e) => {
   }
 });
 
-function ktnUlang({ktnTgl, ktnDet}) {
+function ktnUlang({ktnJudul, ktnDet}) {
   return `
-  <i class="fa fa-exclamation-circle"></i> ${ktnTgl} </br> ${ktnDet}
+  <i class="fa fa-exclamation-circle"></i> ${ktnJudul} </br> ${ktnDet}
 
       <button type="button" class="delete close" aria-hidden="true">×</button>
   `

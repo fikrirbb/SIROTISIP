@@ -1,11 +1,9 @@
 var optionRef = db.ref('/barang');
 var selbarang = document.getElementById('selbarang');
+var selkasirbrg    = document.getElementById('selkasirbrg');
 $(".select2").select2({
    placeholder: "Pilih Barang"
 });
-
-document.getElementById('txtkasirtgl').value = convertDate(todaysDate);
-document.getElementById('txtkasirfaktur').value = "SIP-"+Date.now();
 
 optionRef.on('child_added', (data) => {
    console.log(data.val());
@@ -19,11 +17,14 @@ optionRef.on('child_added', (data) => {
    console.log("Error: " + error.code);
 });
 
+document.getElementById('txtkasirtgl').value = convertDate(todaysDate);
+document.getElementById('txtkasirfaktur').value = "SIP-"+Date.now();
+
+
 
 /////////////// PAGE STOK ///////////////////////////
 var btnkasir = document.getElementById('btnkasir');
 var txtkasirtgl   = document.getElementById('txtkasirtgl');
-var selkasirbrg    = document.getElementById('selkasirbrg');
 var txtkasirqty    = document.getElementById('txtkasirqty');
 var txtkasirfaktur    = document.getElementById('txtkasirfaktur');
 var btnsum = document.getElementById('btnsum');

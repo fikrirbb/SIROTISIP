@@ -1,20 +1,32 @@
 /////////////// PAGE STOK ///////////////////////////
 var btnStok = document.getElementById('btnStok');
 var barangNama   = document.getElementById('barangNama');
-var barangJenis    = document.getElementById('barangJenis');
-var barangHarga    = document.getElementById('barangHarga');
+var stokAwal    = document.getElementById('stokAwal');
+var stokTgl    = document.getElementById('stokTgl');
+var stokSisa    = document.getElementById('stokSisa');
+var stokRetur    = document.getElementById('stokRetur');
+var stokBatas    = document.getElementById('stokBatas');
 var hiddenID   = document.getElementById('hiddenID');
+
+
+document.getElementById('stokTgl').value = convertDate(todaysDate);
 
 var tablestok = $('#stokTable').DataTable ({
   "columnDefs": [
-    { className: "barangNama", "targets": [ 1 ]  },
-      { className: "barangBatas", "targets": [ 3 ]  },
-      { className: "barangStok", "targets": [ 4 ]  }
+    { className: "barangNama", "targets": [ 0 ]  },
+      { className: "stokAwal", "targets": [ 1 ]  },
+      { className: "stokSisa", "targets": [ 2 ]  },
+      { className: "stokRetur", "targets": [ 3 ]  },
+      { className: "stokBatas", "targets": [ 4 ]  },
   ],
   "columns": [
     null,
-    null,
-    null,
+    {
+      "defaultContent": "0"
+    },
+    {
+      "defaultContent": "0"
+    },
     {
       "defaultContent": "0"
     },
@@ -34,67 +46,87 @@ var tablestok = $('#stokTable').DataTable ({
 btnStok.addEventListener('click', (e) => {
   //e.preventDefault();
 
-  if (!barangBatas.value || !barangStok.value) return null;
+  if (!stokTgl.value || !stokAwal.value || !stokSisa.value || !stokRetur.value || !stokBatas.value) return null;
 
-  var id = hiddenID.value;
 
-  db.ref('barang/' + id).update({
-    barangBatas: barangBatas.value,
-    barangStok: barangStok.value,
+//  var id = hiddenID.value;
+
+  db.ref('stok/'+ stokTgl.value + '/' + selkasirbrg.value).update({
+    stokAwal: stokAwal.value,
+    stokSisa: stokSisa.value,
+    stokRetur: stokRetur.value,
+    stokBatas: stokBatas.value
   });
 
-  barangNama.value = '';
-  barangBatas.value  = '';
-  barangStok.value = '';
-  hiddenID.value = '';
-  $('#stokModal').modal('hide');
+  resetstok();
 });
 
-$('#stokModal').on('hide.bs.modal', function (e) {
-  barangNama.value = '';
-  barangBatas.value  = '';
-  barangStok.value = '';
-  hiddenID.value = '';
-})
+function resetstok() {
+$('#selkasirbrg').val(null).trigger('change');
+  stokAwal.value  = null;
+  stokSisa.value = null;
+  stokRetur.value = null;
+  stokBatas.value   = null;
+}
 
 var stok = document.getElementById('stoktabel');
-var stokRef = db.ref('/barang');
+var brgRef = db.ref('/barang');
+var stokRef = db.ref('/stok').child(stokTgl.value);
 
 stokRef.on('child_added', (data) => {
   /*var tr = document.createElement('tr')
   tr.id = data.key;
   tr.innerHTML = brgRow(data.val())
   barang.appendChild(tr);*/
-  var dataSet = [
-    data.val().barangNama,
-    data.val().barangJenis,
-    data.val().barangHarga,
-    data.val().barangBatas,
-    data.val().barangStok,
-    `<td>
-    <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
-    </td>`];
-  tablestok.rows.add([dataSet]).draw().nodes()
-    .to$()
-    .attr("id", data.key );
+
+  var keyid = data.key;
+  var awal, sisa, retur, batas;
+    console.log(stokTgl.value);
+    brgRef.child(keyid).once('value', function(dbarang) {
+      brgnama = dbarang.val().barangNama;
+
+      var dataSet = [
+        brgnama,
+        data.val().stokAwal,
+        data.val().stokSisa,
+      data.val().stokRetur,
+        data.val().stokBatas,
+        `<td>
+        <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
+        </td>`];
+      tablestok.rows.add([dataSet]).draw().nodes()
+        .to$()
+        .attr("id", data.key );
+  });
+
+
 });
 
 stokRef.on('child_changed', (data) => {
-  var brgNode = document.getElementById(data.key);
-  brgNode.innerHTML = stokRow(data.val());
+  var stokNode = document.getElementById(data.key);
+  //brgNode.innerHTML = stokRow(data.val());
+
+  var awal, sisa, retur, batas;
+    console.log(stokTgl.value);
+    brgRef.child(data.key).once('value', function(dbarang) {
+      brgnama = dbarang.val().barangNama;
+
+      stokNode.innerHTML = stokRow(brgnama,data.val());
+  });
 
 });
 
 stok.addEventListener('click', (e) => {
-  var brgNode = e.target.parentNode.parentNode
+  var stokNode = e.target.parentNode.parentNode
 
   // UPDATE REVEIW
   if (e.target.classList.contains('edit')) {
-    $('#stokModal').modal('show');
-    barangNama.value = brgNode.querySelector('.barangNama').innerText;
-    barangBatas.value  = brgNode.querySelector('.barangBatas').innerText;
-    barangStok.value  = brgNode.querySelector('.barangStok').innerText;
-    hiddenID.value = brgNode.id;
+    $('#selkasirbrg').val(stokNode.id).trigger('change');
+    stokAwal.value = stokNode.querySelector('.stokAwal').innerText;
+    stokSisa.value = stokNode.querySelector('.stokSisa').innerText;
+    stokRetur.value = stokNode.querySelector('.stokRetur').innerText;
+    stokBatas.value = stokNode.querySelector('.stokBatas').innerText;
+    //hiddenID.value = brgNode.id;
   }
   //
   // // DELETE REVEIW
@@ -104,13 +136,13 @@ stok.addEventListener('click', (e) => {
   // }
 });
 
-function stokRow({barangNama, barangHarga, barangJenis, barangBatas, barangStok}) {
+function stokRow(brgnama, {stokAwal, stokSisa, stokRetur, stokBatas}) {
   return `
-    <td class='barangNama' id='barangNama'>${barangNama}</td>
-    <td class='barangJenis'>${barangJenis}</td>
-    <td class='barangHarga'>${barangHarga}</td>
-      <td class='barangHarga'>${barangBatas}</td>
-        <td class='barangHarga'>${barangStok}</td>
+    <td class='barangNama' id='barangNama'>${brgnama}</td>
+    <td class='stokAwal'>${stokAwal}</td>
+    <td class='stokSisa'>${stokSisa}</td>
+      <td class='stokRetur'>${stokRetur}</td>
+        <td class='stokBatas'>${stokBatas}</td>
     <td>
         <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
   </td>

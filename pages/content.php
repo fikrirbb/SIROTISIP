@@ -77,7 +77,7 @@
                 <input type="hidden" id="ktnID">
                     <div class="form-group m-b-10">
                       <label>Judul Catatan</label>
-                      <input type="input" id="ktnTgl"  class="form-control" value="">
+                      <input type="input" id="ktnJudul"  class="form-control" value="">
                           <!-- <input type="text" id="date-format" class="form-control" placeholder="Input Tanggal dan Jam"> -->
                       <!-- <input type="text" id="date-format" class="form-control" placeholder="Saturday 24 June 2017 - 21:44">  -->
                     </div>
