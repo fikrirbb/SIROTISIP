@@ -81,7 +81,7 @@ reset();
 });
 
 function reset() {
-  txtkasirtgl.value = convertDate(todaysDate);
+  //txtkasirtgl.value = convertDate(todaysDate);
   $('#selkasirbrg').val(null).trigger('change');
   txtkasirqty.value = null;
   $('#kasirModal').modal('hide');
