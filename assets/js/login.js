@@ -14,6 +14,7 @@ var db = firebase.database();
 var txtemail = document.getElementById('txtEmail');
 var txtpassword = document.getElementById('txtPassword');
 var btnmasuk = document.getElementById('btnMasuk');
+var lgeror = document.getElementById('lgeror');
 
 btnmasuk.addEventListener('click', e => {
   var email = txtemail.value;
@@ -22,15 +23,25 @@ btnmasuk.addEventListener('click', e => {
 
   //proses Masuk
   var kunci = auth.signInWithEmailAndPassword(email, pass);
-  kunci.catch(e => console.log(e.message))
+  kunci.catch(e =>{
+    $('#lgeror').html(e.message);
+    //console.log(e.message)
+  });
 });
 
 
 //cek masuk nggak
 firebase.auth().onAuthStateChanged (firebaseUser => {
   if (firebaseUser) {
-    console.log(firebaseUser)
-    window.location = '../index.php?page=home';
+    console.log(firebaseUser);
+    swal({
+            title: "Berhasil Login!",
+            text: "Anda akan diarahkan ke halaman utama.",
+            type: "success"
+        }, function() {
+            window.location = "../index.php?page=home";
+        });
+    //window.location = '../index.php?page=home';
   }else {
     //window.location = 'pages/login.html';
   }

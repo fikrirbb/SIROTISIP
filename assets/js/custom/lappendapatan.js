@@ -14,8 +14,6 @@ function gantibulan() {
   var masukkRef = db.ref('/transaksi').orderByChild("transaksitgl").startAt(bulanreq.value+"-01").endAt(bulanreq.value+"-31");
 
   $('#lapjualtabel').empty();
-  $('#txttotkeluar').val(0);
-  $('#txttotmasuk').val(0);
   $('#totpendapatan').text("Rp. " +0+ ",-");
     var transaksittl=0;
     var tglNode;
@@ -42,7 +40,6 @@ function gantibulan() {
     // barang.appendChild(tr
     sum += parseInt(data.val().transaksitotal);
     $('#totpendapatan').text("Rp. " + sum + ",-");
-    $('#txttotmasuk').val(sum);
   });
 
   function lapjualRow(transaksittl,{transaksitgl, transaksinote, transaksitotal}) {
@@ -84,8 +81,6 @@ function gantibulan() {
   // barang.appendChild(tr
   sumkel += parseInt(data.val().keluarjumlah);
   $('#totkeluar').text("Rp. " + sumkel + ",-");
-  $('#txttotkeluar').val(sumkel);
-
   });
 
   keluarRef.once('value', (data) => {

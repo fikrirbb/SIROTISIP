@@ -8,6 +8,8 @@
 
 
       <link rel="stylesheet" href="../assets/css/login.css">
+      <!--alerts CSS -->
+    <link href="../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -25,6 +27,7 @@
     </div>
 
     <!-- Login Form -->
+    <h5><div id="lgeror"></div></h5>
       <input type="text" id="txtEmail" class="fadeIn second" placeholder="Email">
       <input type="password" id="txtPassword" class="fadeIn third" placeholder="Password">
       <input type="submit" id="btnMasuk" class="fadeIn fourth" value="Masuk">
@@ -36,8 +39,12 @@
 
   </div>
 </div>
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script src="../assets/js/login.js"></script>
+<!-- Sweet-Alert  -->
+    <script src="../assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 </body>
 
 </html>
