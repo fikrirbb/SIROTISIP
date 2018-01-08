@@ -37,8 +37,8 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Laporan</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.php?page=lapjual">Transaksi Penjualan</a></li>
-                        <li><a href="index.php?page=laplabarugi">Pendapatan (SOON)</a></li>
+                        <li><a href="index.php?page=lap">Slow Fast Move (SOON)</a></li>
+                        <li><a href="index.php?page=lappendapatan">Laba - Rugi (New)</a></li>
                     </ul>
                 </li>
 

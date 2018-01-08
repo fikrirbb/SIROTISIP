@@ -62,10 +62,9 @@
 <!-- This is data table -->
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="assets/js/custom/home.js"></script>
-<script type="text/javascript" src="assets/js/custom/lapjual.js"></script>
+<script type="text/javascript" src="assets/js/custom/lappendapatan.js"></script>
 <script type="text/javascript" src="assets/js/custom/kasir.js"></script>
 <script type="text/javascript" src="assets/js/custom/pengeluaran.js"></script>
-<script type="text/javascript" src="assets/js/custom/pemasukan.js"></script>
 <script type="text/javascript" src="assets/js/custom/stok.js"></script>
 <script type="text/javascript" src="assets/js/custom/config.js"></script>
 </body>

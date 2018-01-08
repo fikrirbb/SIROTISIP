@@ -1,6 +1,15 @@
 <div class="row">
             <div class="col-12">
 
+              <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <h3 class="text-warning"><i class="fa fa-exclamation-triangle"></i> Stok Diambang Batas</h3>
+                <div class="" id="batasStok">
+
+                </div>
+                (-) Aqua 600ml telah diambang batas stok (40)
+                </div>
+
               <div class="card card-outline-info">
                 <div class="card-header">
                   <div class="row">

@@ -41,7 +41,7 @@
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
                                       <h2 class="card-title">Rp 2.000k</h3>
-                                      <h6 class="card-subtitle">Pemasukan</h6> </div>
+                                      <h6 class="card-subtitle">Pemasukan Hari Ini</h6> </div>
                               </div>
                           </div>
                       </div>
@@ -55,7 +55,7 @@
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
                                       <h2 class="card-title">Rp 300k</h3>
-                                      <h6 class="card-subtitle">Pngeluaran</h6> </div>
+                                      <h6 class="card-subtitle">Pengeluaran Hari Ini</h6> </div>
                               </div>
                           </div>
                       </div>

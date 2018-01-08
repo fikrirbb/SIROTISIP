@@ -8,9 +8,9 @@
         'barang'    => './pages/barang.php',
         'akun' => './pages/akun.php',
         'stok'  => './pages/stok.php',
-        'pemasukan'   => './pages/pemasukan.php',
         'pengeluaran'   => './pages/pengeluaran.php',
-        'lapjual'   => './pages/lapjual.php',
+        'lappendapatan'   => './pages/lappendapatan.php',
+        'laplabarugi'   => './pages/laplabarugi.php',
         'kasir'  => './pages/kasir.php'
     );
 
