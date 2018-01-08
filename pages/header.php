@@ -20,6 +20,8 @@
 
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <!--alerts CSS -->
+  <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- You can change the theme colors from here -->
     <link href="assets/css/colors/blue.css" id="theme" rel="stylesheet">
 

@@ -98,8 +98,15 @@ btnBayar.addEventListener('click', (e) => {
     transaksibayar: txtbayar.value,
     transaksinote: txtkasirnote.value
   });
-
-  location.reload();
+$('#kasirModal').modal('hide');
+ var kembalian = parseInt(txtbayar.value) - parseInt(hiddenID.value)
+  swal({
+            title: "Kembalian Rp. " + kembalian + ",-",
+            text: "Selamat Berbelanja Kembali !",
+            type: "success"
+        }, function() {
+            location.reload();
+        });
 
 });
 

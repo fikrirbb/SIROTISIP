@@ -57,6 +57,9 @@
 <!-- Style switcher -->
 <!-- ============================================================== -->
 <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+<!-- Sweet-Alert  -->
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <!-- This is data table -->
