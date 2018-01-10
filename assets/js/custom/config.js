@@ -34,12 +34,20 @@ firebase.auth().onAuthStateChanged(function(user) {
     user.reauthenticateWithCredential(credential).then(function() {
 
       user.updatePassword(txtpassbaru.value).then(function() {
-          console.log("suksees");
+        swal({
+                title: "Berhasil!",
+                text: "Anda berhasil mengupdate password.",
+                type: "success"
+            }, function() {
+              $('txtpasslama').val(null);
+              $('txtpassbaru').val(null);
+                //window.location = "../index.php?page=home";
+            });
         }).catch(function(error) {
-        console.log("gagal");
+          gagalupdate(error);
         });
     }).catch(function(error) {
-      console.error('User signin error', err);
+      gagalupdate(error);
     });
       });
   } else {
@@ -47,6 +55,17 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+function gagalupdate(error) {
+  swal({
+          title: "Gagal!",
+          text: error,
+          type: "warning"
+      }, function() {
+        $('txtpasslama').val(null);
+        $('txtpassbaru').val(null);
+          //window.location = "../index.php?page=home";
+      });
+}
 
 
 
@@ -64,16 +83,35 @@ var btnForm = document.getElementById('btnForm');
 var barangNama   = document.getElementById('barangNama');
 var barangJenis    = document.getElementById('barangJenis');
 var barangHarga    = document.getElementById('barangHarga');
+var barangBatas    = document.getElementById('barangBatas');
 var hiddenID   = document.getElementById('hiddenID');
 
 var table = $('#myTable').DataTable ({
   "columnDefs": [
     { className: "barangNama", "targets": [ 1 ]  },
       { className: "barangJenis", "targets": [ 2 ]  },
-      { className: "barangHarga", "targets": [ 3 ]  }
+      { className: "barangHarga", "targets": [ 3 ]  },
+      { className: "barangBatas", "targets": [ 4 ]  }
   ],
   "lengthMenu": [5, 10, 20, 50, 100],
-  "pageLength": 5
+  "pageLength": 5,
+  "columns": [
+    null,
+    {
+      "defaultContent": "0"
+    },
+    {
+      "defaultContent": "0"
+    },
+    {
+      "defaultContent": "0"
+    },
+    {
+      "defaultContent": "0"
+    },
+    null
+
+  ],
   //'createdRow': function( row, data, dataIndex ) {
       //$(row).attr('id', data.key);
   //}
@@ -90,6 +128,7 @@ btnForm.addEventListener('click', (e) => {
     barangNama: barangNama.value,
     barangHarga: barangHarga.value,
     barangJenis: barangJenis.value,
+    barangBatas: barangBatas.value,
   });
 
   barangNama.value = '';
@@ -99,12 +138,14 @@ btnForm.addEventListener('click', (e) => {
   $('#exampleModal').modal('hide');
 });
 
-$('#exampleModal').on('hide.bs.modal', function (e) {
+function resetbrg() {
   barangNama.value = '';
   barangHarga.value  = '';
   barangJenis.value = '';
+  barangBatas.value = '';
   hiddenID.value = '';
-})
+  $('#exampleModal').modal('hide');
+}
 
 var barang = document.getElementById('barangtabel');
 var brgRef = db.ref('/barang');
@@ -119,6 +160,7 @@ brgRef.on('child_added', (data) => {
     data.val().barangNama,
     data.val().barangJenis,
     data.val().barangHarga,
+    data.val().barangBatas,
     `<td>
     <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
     <button class="delete btn btn-danger "><span class="fa fa-trash"></span></button>
@@ -149,6 +191,7 @@ barang.addEventListener('click', (e) => {
     barangNama.value = brgNode.querySelector('.barangNama').innerText;
     barangJenis.value  = brgNode.querySelector('.barangJenis').innerText;
     barangHarga.value  = brgNode.querySelector('.barangHarga').innerText;
+    barangBatas.value  = brgNode.querySelector('.barangBatas').innerText;
     hiddenID.value = brgNode.id;
   }
 
@@ -159,12 +202,13 @@ barang.addEventListener('click', (e) => {
   }
 });
 
-function brgRow(key, {barangNama, barangHarga, barangJenis}) {
+function brgRow(key, {barangNama, barangHarga, barangJenis, barangBatas}) {
   return `
     <td >${key}</td>
     <td class='barangNama' id='barangNama'>${barangNama}</td>
     <td class='barangJenis'>${barangJenis}</td>
     <td class='barangHarga'>${barangHarga}</td>
+    <td class='barangBatas'>${barangBatas}</td>
     <td>
         <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
         <button class="delete btn btn-danger "><span class="fa fa-trash"></span></button>

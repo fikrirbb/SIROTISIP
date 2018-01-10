@@ -21,6 +21,7 @@
                                  <th>Nama</th>
                                  <th>Jenis</th>
                                  <th>Harga</th>
+                                 <th>Batas Stok</th>
                                  <th>Aksi</th>
                                </tr>
                            </thead>
@@ -59,6 +60,10 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="control-label">Harga Barang</label>
                                 <input type="text" class="form-control" id="barangHarga">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Batas Stok</label>
+                                <input type="text" class="form-control" id="barangBatas">
                             </div>
                             <!-- <div class="form-group">
                                 <label for="message-text" class="control-label">Message:</label>

@@ -52,12 +52,6 @@
                             <input type="text" class="form-control" id="stokRetur">
                         </div>
                       </div>
-                      <div class="col-md-1 ">
-                        <div class="form-group m-b-0">
-                            <label for="recipient-name" class="control-label">Batas</label>
-                            <input type="text" class="form-control" id="stokBatas">
-                        </div>
-                      </div>
                       <div class="col-md-2 m-t-30">
                           <button type="button" class="btn btn-warning" id="btnStok">Simpan</button>
                       </div>
@@ -74,7 +68,6 @@
                                  <th>Stok Awal</th>
                                  <th>Sisa</th>
                                  <th>Retur</th>
-                                 <th>Batas Stok</th>
                                  <th>Aksi</th>
                                </tr>
                            </thead>

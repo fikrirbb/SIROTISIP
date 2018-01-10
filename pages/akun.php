@@ -3,7 +3,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <center class="m-t-30 m-b-30"> <img src="assets/images/users/5.jpg" class="img-circle" width="150" />
-                                    <h4 class="card-title m-t-10" id="h4username">Hanna Gover</h4>
+                                    <h4 class="card-title m-t-10" id="h4username"></h4>
                                     <h6 class="card-subtitle" id="showemail2"></h6>
                                 </center>
                             </div>

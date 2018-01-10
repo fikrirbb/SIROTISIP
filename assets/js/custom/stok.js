@@ -1,3 +1,16 @@
+// var btsstok = document.getElementById('batasStok');
+// var brgRef = db.ref('/barang');
+//
+// stokRef.on('child_added', (data) => {
+//   /*var tr = document.createElement('tr')
+//   tr.id = data.key;
+//   tr.innerHTML = brgRow(data.val())
+//   barang.appendChild(tr);*/
+// });
+
+
+
+
 /////////////// PAGE STOK ///////////////////////////
 var btnStok = document.getElementById('btnStok');
 var barangNama   = document.getElementById('barangNama');
@@ -5,7 +18,6 @@ var stokAwal    = document.getElementById('stokAwal');
 var stokTgl    = document.getElementById('stokTgl');
 var stokSisa    = document.getElementById('stokSisa');
 var stokRetur    = document.getElementById('stokRetur');
-var stokBatas    = document.getElementById('stokBatas');
 var hiddenID   = document.getElementById('hiddenID');
 
 
@@ -17,13 +29,9 @@ var tablestok = $('#stokTable').DataTable ({
       { className: "stokAwal", "targets": [ 1 ]  },
       { className: "stokSisa", "targets": [ 2 ]  },
       { className: "stokRetur", "targets": [ 3 ]  },
-      { className: "stokBatas", "targets": [ 4 ]  },
   ],
   "columns": [
     null,
-    {
-      "defaultContent": "0"
-    },
     {
       "defaultContent": "0"
     },
@@ -46,7 +54,7 @@ var tablestok = $('#stokTable').DataTable ({
 btnStok.addEventListener('click', (e) => {
   //e.preventDefault();
 
-  if (!stokTgl.value || !stokAwal.value || !stokSisa.value || !stokRetur.value || !stokBatas.value) return null;
+  if (!stokTgl.value || !stokAwal.value || !stokSisa.value || !stokRetur.value ) return null;
 
 
 //  var id = hiddenID.value;
@@ -54,8 +62,7 @@ btnStok.addEventListener('click', (e) => {
   db.ref('stok/'+ stokTgl.value + '/' + selkasirbrg.value).update({
     stokAwal: stokAwal.value,
     stokSisa: stokSisa.value,
-    stokRetur: stokRetur.value,
-    stokBatas: stokBatas.value
+    stokRetur: stokRetur.value
   });
 
   resetstok();
@@ -66,7 +73,6 @@ $('#selkasirbrg').val(null).trigger('change');
   stokAwal.value  = null;
   stokSisa.value = null;
   stokRetur.value = null;
-  stokBatas.value   = null;
 }
 
 var stok = document.getElementById('stoktabel');
@@ -90,7 +96,6 @@ stokRef.on('child_added', (data) => {
         data.val().stokAwal,
         data.val().stokSisa,
       data.val().stokRetur,
-        data.val().stokBatas,
         `<td>
         <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
         </td>`];
@@ -125,7 +130,6 @@ stok.addEventListener('click', (e) => {
     stokAwal.value = stokNode.querySelector('.stokAwal').innerText;
     stokSisa.value = stokNode.querySelector('.stokSisa').innerText;
     stokRetur.value = stokNode.querySelector('.stokRetur').innerText;
-    stokBatas.value = stokNode.querySelector('.stokBatas').innerText;
     //hiddenID.value = brgNode.id;
   }
   //
@@ -142,7 +146,6 @@ function stokRow(brgnama, {stokAwal, stokSisa, stokRetur, stokBatas}) {
     <td class='stokAwal'>${stokAwal}</td>
     <td class='stokSisa'>${stokSisa}</td>
       <td class='stokRetur'>${stokRetur}</td>
-        <td class='stokBatas'>${stokBatas}</td>
     <td>
         <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
   </td>
