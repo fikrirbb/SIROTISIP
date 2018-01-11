@@ -5,10 +5,10 @@
                 <div class="card-header">
                   <div class="row">
                <div class="col-9">
-                 <h3 class="card-title text-white">Laporan Laba - Rugi Perbulan</h3>
+                 <h3 class="card-title text-white">Laporan Laba - Rugi Perhari</h3>
                </div>
                <div class="col-3 text-right">
-                  <input type="month" class="form-control" id="lapjualTgl">
+                  <input type="date" class="form-control" id="lapjualTglr">
                </div>
                 </div>
                 </div>
@@ -18,7 +18,7 @@
 
 
                   <div class="col-md-6  text-right">
-                    <h3 class="">Pendapatan Bulanan  </h3>
+                    <h3 class="">Pendapatan Harian  </h3>
                   </div>
                   <div class="col-md-6 p-l-0">
                     <h3 class=""><div id="labarugi"></div></h3>

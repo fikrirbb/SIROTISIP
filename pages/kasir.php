@@ -67,7 +67,6 @@
                                 <tr>
                                   <th>Nama Barang</th>
                                   <th>Banyak</th>
-                                  <th>Stok</th>
                                   <th>Harga</th>
                                   <th>Sub Total</th>
                                   <th>Aksi</th>

@@ -1,6 +1,5 @@
-// var btsstok = document.getElementById('batasStok');
-// var brgRef = db.ref('/barang');
-//
+var btsstok = $('#batasStok');
+
 // stokRef.on('child_added', (data) => {
 //   /*var tr = document.createElement('tr')
 //   tr.id = data.key;
@@ -19,6 +18,7 @@ var stokTgl    = document.getElementById('stokTgl');
 var stokSisa    = document.getElementById('stokSisa');
 var stokRetur    = document.getElementById('stokRetur');
 var hiddenID   = document.getElementById('hiddenID');
+$('#colsisa').hide();
 
 
 document.getElementById('stokTgl').value = convertDate(todaysDate);
@@ -54,15 +54,21 @@ var tablestok = $('#stokTable').DataTable ({
 btnStok.addEventListener('click', (e) => {
   //e.preventDefault();
 
-  if (!stokTgl.value || !stokAwal.value || !stokSisa.value || !stokRetur.value ) return null;
+  if (!stokTgl.value || !stokAwal.value || !stokRetur.value) return null;
 
 
 //  var id = hiddenID.value;
+  var sisa
+  if (!stokSisa.value) {
+      sisa = stokAwal.value
+  }else {
+      sisa = stokSisa.value
+  };
 
   db.ref('stok/'+ stokTgl.value + '/' + selkasirbrg.value).update({
-    stokAwal: stokAwal.value,
-    stokSisa: stokSisa.value,
-    stokRetur: stokRetur.value
+      stokAwal: stokAwal.value,
+      stokSisa: sisa,
+      stokRetur: stokRetur.value
   });
 
   resetstok();
@@ -73,6 +79,7 @@ $('#selkasirbrg').val(null).trigger('change');
   stokAwal.value  = null;
   stokSisa.value = null;
   stokRetur.value = null;
+  $('#colsisa').hide();
 }
 
 var stok = document.getElementById('stoktabel');
@@ -95,13 +102,20 @@ stokRef.on('child_added', (data) => {
         brgnama,
         data.val().stokAwal,
         data.val().stokSisa,
-      data.val().stokRetur,
+        data.val().stokRetur,
         `<td>
         <button class="edit btn btn-info"><span class="fa fa-pencil"></span></button>
         </td>`];
       tablestok.rows.add([dataSet]).draw().nodes()
         .to$()
         .attr("id", data.key );
+        if (dbarang.val().barangBatas > data.val().stokSisa) {
+
+          var p = document.createElement('p');
+          p.id = 'p'+data.key;
+          p.innerHTML = notifRow(brgnama,data.val().stokSisa, dbarang.val().barangBatas);
+          btsstok.append(p);
+        }
   });
 
 
@@ -112,10 +126,9 @@ stokRef.on('child_changed', (data) => {
   //brgNode.innerHTML = stokRow(data.val());
 
   var awal, sisa, retur, batas;
-    console.log(stokTgl.value);
+    //console.log(stokTgl.value);
     brgRef.child(data.key).once('value', function(dbarang) {
       brgnama = dbarang.val().barangNama;
-
       stokNode.innerHTML = stokRow(brgnama,data.val());
   });
 
@@ -126,6 +139,7 @@ stok.addEventListener('click', (e) => {
 
   // UPDATE REVEIW
   if (e.target.classList.contains('edit')) {
+    $('#colsisa').show();
     $('#selkasirbrg').val(stokNode.id).trigger('change');
     stokAwal.value = stokNode.querySelector('.stokAwal').innerText;
     stokSisa.value = stokNode.querySelector('.stokSisa').innerText;
@@ -152,4 +166,9 @@ function stokRow(brgnama, {stokAwal, stokSisa, stokRetur, stokBatas}) {
   `
 };
 
+function notifRow(brgnama, stokSisa, barangBatas) {
+  return `
+    (>) <b>${brgnama}</b> telah diambang batas (${stokSisa}) dari (${barangBatas})
+  `
+}
 /////////////// END PAGE STOK ///////////////////////////

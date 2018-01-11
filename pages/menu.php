@@ -38,7 +38,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">Laporan</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="index.php?page=lap">Slow Fast Move (SOON)</a></li>
-                        <li><a href="index.php?page=lappendapatan">Laba - Rugi <span class="label label-rouded label-themecolor pull-right">New</span></a></li>
+                        <li><a href="index.php?page=lappendapatanhari">Pendapatan Harian</a></li>
+                          <li><a href="index.php?page=lappendapatan">Pendapatan Bulanan</a></li>
                     </ul>
                 </li>
 

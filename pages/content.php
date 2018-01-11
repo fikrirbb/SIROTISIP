@@ -12,8 +12,8 @@
                                   <div class="m-r-20 align-self-center">
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
-                                      <h2 class="card-title">178</h3>
-                                      <h6 class="card-subtitle">Transaksi Hari Ini</h6> </div>
+                                      <h2 class="card-title" id="cardtransaksi">#0</h3>
+                                      <h6 class="card-subtitle">Transaksi Hari Ini</h6></div>
                               </div>
                           </div>
                       </div>
@@ -26,8 +26,8 @@
                                   <div class="m-r-20 align-self-center">
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
-                                      <h2 class="card-title">4 Item</h3>
-                                      <h6 class="card-subtitle">Stok Diluar Batas</h6> </div>
+                                      <h2 class="card-title" id="cardbatas">0 Item</h3>
+                                      <h6 class="card-subtitle">Stok Diluar Batas</h6></div>
                               </div>
                           </div>
                       </div>
@@ -40,8 +40,8 @@
                                   <div class="m-r-20 align-self-center">
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
-                                      <h2 class="card-title">Rp 2.000k</h3>
-                                      <h6 class="card-subtitle">Pemasukan Hari Ini</h6> </div>
+                                      <h2 class="card-title" id="cardpemasukan">Rp. 0</h3>
+                                      <h6 class="card-subtitle">Pemasukan Hari Ini</h6></div>
                               </div>
                           </div>
                       </div>
@@ -54,7 +54,7 @@
                                   <div class="m-r-20 align-self-center">
                                       <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
                                   <div>
-                                      <h2 class="card-title">Rp 300k</h3>
+                                      <h2 class="card-title" id="cardpengeluaran">Rp. 0</h3>
                                       <h6 class="card-subtitle">Pengeluaran Hari Ini</h6> </div>
                               </div>
                           </div>

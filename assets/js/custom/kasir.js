@@ -5,17 +5,28 @@ $(".select2").select2({
    placeholder: "Pilih Barang"
 });
 
-optionRef.on('child_added', (data) => {
-   console.log(data.val());
-   var option = document.createElement('option');
-   var datav = data.val();
-    option.value = data.key;
-    option.text = datav.barangNama;
-    selbarang.appendChild(option);
-
-}, function (error) {
-   console.log("Error: " + error.code);
+optionRef.once('value', function(snapshot) {
+  snapshot.forEach(function(data) {
+    var option = document.createElement('option');
+    var datav = data.val();
+     option.value = data.key;
+     option.text = datav.barangNama;
+     selbarang.appendChild(option);
+    // ...
+  });
 });
+
+// optionRef.on('child_added', (data) => {
+//    console.log(data.val());
+//    var option = document.createElement('option');
+//    var datav = data.val();
+//     option.value = data.key;
+//     option.text = datav.barangNama;
+//     selbarang.appendChild(option);
+//
+// }, function (error) {
+//    console.log("Error: " + error.code);
+// });
 
 document.getElementById('txtkasirtgl').value = convertDate(todaysDate);
 document.getElementById('txtkasirfaktur').value = "SIP-"+Date.now();
@@ -76,8 +87,21 @@ btnkasir.addEventListener('click', (e) => {
     detnota: txtkasirfaktur.value
   });
 
-reset();
+  var sisa2, awal, retur;
+    db.ref('stok/'+ txtkasirtgl.value + '/' + selkasirbrg.value).once('value', function(snapshot) {
 
+      console.log(selkasirbrg.value);
+      awal = snapshot.val().stokAwal;
+      retur = snapshot.val().stokRetur;
+     sisa2 = snapshot.val().stokSisa - txtkasirqty.value;
+     console.log(sisa2);
+    db.ref('stok/'+ txtkasirtgl.value + '/' + selkasirbrg.value).update({
+        //stokAwal: awal,
+        //stokRetur: retur,
+        stokSisa: sisa2,
+    });
+    reset();
+  });
 });
 
 function reset() {
@@ -98,6 +122,7 @@ btnBayar.addEventListener('click', (e) => {
     transaksibayar: txtbayar.value,
     transaksinote: txtkasirnote.value
   });
+
 $('#kasirModal').modal('hide');
  var kembalian = parseInt(txtbayar.value) - parseInt(hiddenID.value)
   swal({
@@ -120,13 +145,14 @@ kasirRef.on('child_added', (data) => {
   var brgnama, brgharga, brgstok;
     brgRef.child(brgid).once('value', function(dbarang) {
       brgnama = dbarang.val().barangNama;
+      brgid = dbarang.key;
       brgharga = dbarang.val().barangHarga;
       brgstok = dbarang.val().barangStok;
 
   var subtotal = data.val().detqty*brgharga;
   var tr = document.createElement('tr')
   tr.id = data.key;
-  tr.innerHTML = kasirUlang(brgnama, brgstok, brgharga, subtotal, data.val())
+  tr.innerHTML = kasirUlang(brgid, brgnama, brgstok, brgharga, subtotal, data.val())
   tblkasir.appendChild(tr);
   //console.log(data);
 
@@ -171,15 +197,33 @@ tblkasir.addEventListener('click', (e) => {
   // DELETE REVEIW
   if (e.target.classList.contains('delete')) {
     var id = kasirNode.id;
+    var brgid = kasirNode.querySelector('.brgid').innerText;
+    var qty = kasirNode.querySelector('.kasirqty').innerText;
     db.ref('transaksiDetail/' + id).remove();
+
+    var sisa2, awal, retur;
+      db.ref('stok/'+ txtkasirtgl.value + '/' + brgid).once('value', function(snapshot) {
+
+        console.log(brgid);
+        awal = snapshot.val().stokAwal;
+        retur = snapshot.val().stokRetur;
+       sisa2 = snapshot.val().stokSisa + parseInt(qty);
+       console.log(sisa2);
+      db.ref('stok/'+ txtkasirtgl.value + '/' + brgid).update({
+          //stokAwal: awal,
+          //stokRetur: retur,
+          stokSisa: sisa2,
+      });
+    });
+
   }
 });
 
-function kasirUlang(brgnama, brgstok, brgharga, subtotal, {detbrg, detnota, detqty, dettgl}) {
+function kasirUlang(brgid, brgnama, brgstok, brgharga, subtotal, {detbrg, detnota, detqty, dettgl}) {
   return `
+  <td class="brgid" hidden>${brgid}</td>
   <td>${brgnama}</td>
-  <td>${detqty}</td>
-  <td>${brgstok}</td>
+  <td class="kasirqty">${detqty}</td>
     <td>${brgharga}</td>
     <td class="subtot">${subtotal}</td>
     <td>

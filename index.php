@@ -10,6 +10,7 @@
         'stok'  => './pages/stok.php',
         'pengeluaran'   => './pages/pengeluaran.php',
         'lappendapatan'   => './pages/lappendapatan.php',
+        'lappendapatanhari'   => './pages/lappendapatanhari.php',
         'laplabarugi'   => './pages/laplabarugi.php',
         'kasir'  => './pages/kasir.php'
     );

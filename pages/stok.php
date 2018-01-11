@@ -7,7 +7,6 @@
                 <div class="" id="batasStok">
 
                 </div>
-                (-) Aqua 600ml telah diambang batas stok (40)
                 </div>
 
               <div class="card card-outline-info">
@@ -40,7 +39,7 @@
                             <input type="text" class="form-control" id="stokAwal">
                         </div>
                       </div>
-                        <div class="col-md-1">
+                        <div class="col-md-1" id="colsisa">
                         <div class="form-group m-b-0">
                             <label for="recipient-name" class="control-label">Sisa</label>
                             <input type="text" class="form-control" id="stokSisa">
