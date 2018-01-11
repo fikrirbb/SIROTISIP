@@ -115,12 +115,18 @@ function reset() {
 
 btnBayar.addEventListener('click', (e) => {
   if (parseInt(txtbayar.value) < hiddenID.value) return null;
+  var catat;
+  if (!txtkasirnote.value) {
+      catat = "Penjualan Kasir";
+  }else {
+      catat = txtkasirnote.value
+  };
 
   db.ref('transaksi/'+ txtkasirfaktur.value).set({
     transaksitgl: txtkasirtgl.value,
     transaksitotal: hiddenID.value,
     transaksibayar: txtbayar.value,
-    transaksinote: txtkasirnote.value
+    transaksinote: catat
   });
 
 $('#kasirModal').modal('hide');

@@ -38,18 +38,24 @@ var tablekeluar = $('#keluarTable').DataTable({
 btnPengeluaran.addEventListener('click', (e) => {
   //e.preventDefault();
 
-  if (!txtkeluartgl.value || !txtkeluarsumber.value || !txtkeluarnilai.value || !txtkeluarnote.value) return null;
+  if (!txtkeluartgl.value || !txtkeluarsumber.value || !txtkeluarnilai.value) return null;
 
   var id = hiddenID.value || Date.now();
+
+  var catat;
+  if (!txtkeluarnote.value) {
+      catat = txtkeluarsumber.value;
+  }else {
+      catat = txtkeluarnote.value;
+  };
 
   db.ref('pengeluaran/'+id).update({
     keluartgl: txtkeluartgl.value,
     keluarperihal: txtkeluarsumber.value,
     keluarjumlah: txtkeluarnilai.value,
-    keluarnote: txtkeluarnote.value
+    keluarnote: catat
   });
 
-  txtkeluartgl.value = '';
   txtkeluarsumber.value  = '';
   txtkeluarnilai.value = '';
   txtkeluarnote.value = '';
